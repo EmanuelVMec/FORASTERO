@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Home, ShoppingCart, BarChart, Users, ChevronLeft, ChevronRight, DollarSign, Box, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Home,
+  ShoppingCart,
+  BarChart,
+  Users,
+  ChevronLeft,
+  ChevronRight,
+  DollarSign,
+  Box,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import "./Header.css";
 
 const Header = () => {
@@ -21,8 +32,11 @@ const Header = () => {
   return (
     <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <div className="sidebar-header">
-        <div className="logo">El ForasteroTJ</div>
-        <p className="plan">Administracion</p>
+        <div className="logo-container">
+          <img src="/logo.png" alt="El ForasteroTJ" className="logo-img" />
+          {isOpen && <span className="logo-text">El ForasteroTJ</span>}
+        </div>
+        {isOpen && <p className="plan">Administración</p>}
       </div>
       <nav className="sidebar-nav">
         <ul>
@@ -33,7 +47,8 @@ const Header = () => {
           </li>
           <li>
             <div className="nav-link" onClick={toggleVentas}>
-              <DollarSign size={30} /> {isOpen && "Ventas"} {isOpen && (isVentasOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />)}
+              <DollarSign size={30} /> {isOpen && "Ventas"}{" "}
+              {isOpen && (isVentasOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />)}
             </div>
             {isVentasOpen && (
               <ul className="submenu" style={{ paddingLeft: "30px" }}>
@@ -52,7 +67,8 @@ const Header = () => {
           </li>
           <li>
             <div className="nav-link" onClick={toggleProductos}>
-              <ShoppingCart size={30} /> {isOpen && "Productos"} {isOpen && (isProductsOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />)}
+              <ShoppingCart size={30} /> {isOpen && "Productos"}{" "}
+              {isOpen && (isProductsOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />)}
             </div>
             {isProductsOpen && (
               <ul className="submenu" style={{ paddingLeft: "30px" }}>
@@ -63,7 +79,7 @@ const Header = () => {
                 </li>
                 <li>
                   <Link to="/gestion-inventario" className="nav-link submenu-item">
-                    {isOpen && "Gestion Inventario"}
+                    {isOpen && "Gestión Inventario"}
                   </Link>
                 </li>
               </ul>
@@ -76,7 +92,7 @@ const Header = () => {
           </li>
           <li>
             <Link to="/analisis" className="nav-link">
-              <BarChart size={30} /> {isOpen && "Analisis BI"}
+              <BarChart size={30} /> {isOpen && "Análisis BI"}
             </Link>
           </li>
           <li>

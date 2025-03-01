@@ -1,0 +1,133 @@
+/* Contenedor principal en pantalla completa */
+.ventas-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Asegura que todo esté bien centrado */
+    padding: 30px;
+    background: #f9f9f9; /* Fondo claro para toda la pantalla */
+}
+
+/* Título */
+.h2 {
+    margin-bottom: 20px;
+}
+
+/* Botones de filtro */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #0056b3;
+}
+
+.filter-btn.active {
+    background: #003f7f;
+}
+
+/* Tabla de ventas */
+.ventas-table {
+    width: 95%;
+    background: white;
+    border-collapse: collapse;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.ventas-table th, .ventas-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Modal en pantalla completa y sin recortes */
+.modalventa {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ajuste del modal para que sea más grande */
+.modalventa-content {
+    background: rgb(255, 250, 250);
+    padding: 30px;
+    border-radius: 10px;
+    width: 50%;
+    max-width: 600px;
+    box-shadow: 0px 4px 10px rgba(239, 243, 5, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Inputs accesibles */
+.input,
+.select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Botones del modal */
+.modalventa-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modalventa-buttons button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modalventa-buttons button:first-child {
+    background: #d9534f;
+    color: white;
+}
+
+.modalventa-buttons button:last-child {
+    background: #007bff;
+    color: white;
+}
+
+.modalventa-buttons button:hover {
+    opacity: 0.9;
+}
+
+/* Animación para suavizar la entrada del modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -36,7 +36,6 @@ const Header = () => {
           <img src="/logo.png" alt="El ForasteroTJ" className="logo-img" />
           {isOpen && <span className="logo-text">El ForasteroTJ</span>}
         </div>
-        {isOpen && <p className="plan">Administración</p>}
       </div>
       <nav className="sidebar-nav">
         <ul>
@@ -53,12 +52,12 @@ const Header = () => {
             {isVentasOpen && (
               <ul className="submenu" style={{ paddingLeft: "30px" }}>
                 <li>
-                  <Link to="/nueva-venta" className="nav-link submenu-item">
+                  <Link to="/NewVenta" className="nav-link submenu-item">
                     {isOpen && "Nueva venta"}
                   </Link>
                 </li>
                 <li>
-                  <Link to="/ganancia-perdida" className="nav-link submenu-item">
+                  <Link to="/gananciaperdida" className="nav-link submenu-item">
                     {isOpen && "Ganancias/Perdidas"}
                   </Link>
                 </li>

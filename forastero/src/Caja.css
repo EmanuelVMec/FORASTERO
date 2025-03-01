@@ -20,7 +20,7 @@
     margin-bottom: 20px;
   }
   
-  h2 {
+  .h2 {
     font-size: 24px;
     font-weight: bold;
     color: #333;
@@ -93,4 +93,5 @@
   .edit-button:hover {
     transform: scale(1.2);
   }
+  
   

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Caja.css";
 import { Pencil, Trash } from "lucide-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Caja = () => {
   const getCurrentDate = () => {
@@ -62,8 +64,16 @@ const Caja = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (hasEntryToday) {
-      alert("Solo puedes ingresar datos una vez al día.");
+    if (hasEntryToday && editingIndex === null) {
+      toast.warn("Solo puedes ingresar datos una vez al día.", {
+        position: "top-right",
+        autoClose: 1700,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return;
     }
     if (editingIndex !== null) {
@@ -87,8 +97,14 @@ const Caja = () => {
     });
   };
 
+  const handleEdit = (index) => {
+    setFormData({ ...cajaData[index] });
+    setEditingIndex(index);
+  };
+
   return (
     <div className="caja-container">
+      <ToastContainer />
       <div className="caja-header">
         <h2>Gestión de Caja</h2>
         <h4>Resumen Semanal: Caja Chica: {weeklySummary.cajaChica} | Ganancia: {weeklySummary.ganancia}</h4>
@@ -103,7 +119,7 @@ const Caja = () => {
         <input type="number" name="cajaChica" placeholder="Caja Chica" value={formData.cajaChica} onChange={handleChange} required />
         <input type="number" name="totalDiario" placeholder="Total Diario" value={formData.totalDiario} readOnly />
         <input type="number" name="ganancia" placeholder="Ganancia" value={formData.ganancia} readOnly />
-        <button type="submit" className="submit-button" disabled={hasEntryToday}>{editingIndex !== null ? "Actualizar" : "Agregar"}</button>
+        <button type="submit" className="submit-button">{editingIndex !== null ? "Actualizar" : "Agregar"}</button>
       </form>
       <table className="caja-table">
         <thead>
@@ -117,6 +133,7 @@ const Caja = () => {
             <th>Caja Chica</th>
             <th>Total Diario</th>
             <th>Ganancia</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -131,6 +148,11 @@ const Caja = () => {
               <td>{row.cajaChica}</td>
               <td>{row.totalDiario}</td>
               <td>{row.ganancia}</td>
+              <td>
+                <button className="edit-button" onClick={() => handleEdit(index)}>
+                  <Pencil size={16} />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

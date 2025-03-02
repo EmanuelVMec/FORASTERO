@@ -4,6 +4,7 @@ import Header from "./Header"; // Importa el header
 import Proveedores from "./Proveedores";
 import Caja from "./Caja";
 import NewVenta from "./NewVenta";
+import GananciaPerdida from "./Gananciaperdida";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             <Route path="/proveedores" element={<Proveedores />} />
             <Route path="/caja" element={<Caja />} />
             <Route path="/newventa" element={<NewVenta />} />
-            <Route path="/" element={<h1>Inicio</h1>} />
+            <Route path="/gananciaperdida" element={<GananciaPerdida />} />
           </Routes>
         </div>
     </Router>

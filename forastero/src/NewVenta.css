@@ -1,17 +1,19 @@
-/* Contenedor principal en pantalla completa */
+/* Contenedor principal */
 .ventas-container {
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Asegura que todo esté bien centrado */
-    padding: 30px;
-    background: #f9f9f9; /* Fondo claro para toda la pantalla */
+    justify-content: flex-start; /* Ajustado para evitar que desaparezca la parte superior */
+    padding: 20px;
+    background: #f9f9f9;
+    overflow: hidden; /* Evita scroll innecesario en la pantalla completa */
 }
 
-/* Título */
+/* Centrar y espaciar correctamente */
 .h2 {
+    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -24,40 +26,46 @@
     flex-wrap: wrap;
 }
 
-.filter-btn {
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    background: #007bff;
-    color: white;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-.filter-btn:hover {
-    background: #0056b3;
-}
-
-.filter-btn.active {
-    background: #003f7f;
-}
-
-/* Tabla de ventas */
-.ventas-table {
-    width: 95%;
+/* Contenedor de la tabla con desplazamiento */
+.ventas-table-container {
+    width: 90%;
+    height: 65vh;
+    overflow-x: auto;
+    overflow-y: auto;
     background: white;
-    border-collapse: collapse;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Tabla con mínimo ancho para permitir desplazamiento horizontal */
+.ventas-table {
+    min-width: 1200px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Celdas de la tabla */
 .ventas-table th, .ventas-table td {
     padding: 12px;
     border: 1px solid #ddd;
-    text-align: left;
+    text-align: center;
 }
 
-/* Modal en pantalla completa y sin recortes */
+/* Botones de acción dentro de la tabla */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Botones de acción individuales */
+.action-buttons button {
+    margin: 3px;
+    padding: 6px;
+    border-radius: 5px;
+}
+/* Fondo del modal */
 .modalventa {
     position: fixed;
     top: 0;
@@ -68,59 +76,142 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
 }
 
-/* Ajuste del modal para que sea más grande */
+/* Contenido del modal */
 .modalventa-content {
-    background: rgb(255, 250, 250);
-    padding: 30px;
-    border-radius: 10px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
     width: 50%;
-    max-width: 600px;
-    box-shadow: 0px 4px 10px rgba(239, 243, 5, 0.3);
+    max-width: 800px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
     animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Inputs accesibles */
-.input,
-.select {
+/* Encabezado del modal */
+.modalventa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* Botón de cierre */
+.modalventa-header .close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+    transition: 0.3s;
+}
+
+.modalventa-header .close-btn:hover {
+    color: #e74c3c;
+}
+
+/* Sección de Detalles */
+.modal-section {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.modal-section h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Diseño en grid */
+.modalventa-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Contenedor de inputs */
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.modalventa-body label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Inputs y selects con texto en color negro */
+.modalventa-body input, 
+.modalventa-body select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 16px;
+    background: #f9f9f9;
+    color: #000;  /* Letras en negro */
 }
 
-/* Botones del modal */
+/* Placeholder en negro también */
+.modalventa-body input::placeholder {
+    color: #000;
+}
+
+/* Ajuste especial para que "Fecha" ocupe una fila completa */
+.input-container.full-width {
+    grid-column: span 2;
+}
+
+/* Botones */
 .modalventa-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
+/* Botones de acción */
 .modalventa-buttons button {
-    padding: 12px 18px;
+    padding: 12px 16px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 6px;
     font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.modalventa-buttons button:first-child {
-    background: #d9534f;
+/* Botón de cancelar */
+.modalventa-buttons .cancelar {
+    background: #e74c3c;
     color: white;
 }
 
-.modalventa-buttons button:last-child {
-    background: #007bff;
+.modalventa-buttons .cancelar:hover {
+    background: #c0392b;
+}
+
+/* Botón de guardar */
+.modalventa-buttons .guardar {
+    background: #3498db;
     color: white;
 }
 
-.modalventa-buttons button:hover {
-    opacity: 0.9;
+.modalventa-buttons .guardar:hover {
+    background: #2980b9;
 }
 
-/* Animación para suavizar la entrada del modal */
+/* Animación de entrada del modal */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -130,4 +221,77 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+
+
+
+
+* Contenedor de los botones */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Estilos generales para los botones */
+.action-buttons button {
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+/* Efecto hover para todos los botones */
+.action-buttons button:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos individuales de los botones */
+.copy-button {
+    background: #6c757d;
+    color: white;
+}
+
+.copy-button:hover {
+    background: #5a6268;
+}
+
+.edit-button {
+    background: #007bff;
+    color: white;
+}
+
+.edit-button:hover {
+    background: #0056b3;
+}
+
+.delete-button {
+    background: #dc3545;
+    color: white;
+}
+
+.delete-button:hover {
+    background: #b52a37;
+}
+
+.download-button {
+    background: #28a745;
+    color: white;
+}
+
+.download-button:hover {
+    background: #218838;
+}
+
+.titulo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el icono y el texto */
+    color: #28a745;
 }

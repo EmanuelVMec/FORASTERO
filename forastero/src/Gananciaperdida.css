@@ -1,0 +1,167 @@
+/* Estilos generales */
+.ganancia-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    background: #f9f9f9;
+    overflow: hidden;
+}
+
+.titulo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #28a745;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botón de agregar */
+.add-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.add-button:hover {
+    background: #0056b3;
+}
+
+/* Contenedor de la tabla */
+.ganancia-table-container {
+    width: 90%;
+    height: 65vh;
+    overflow-x: auto;
+    overflow-y: auto;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ganancia-table {
+    min-width: 1000px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.ganancia-table th, .ganancia-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Botones de acción */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.action-buttons button {
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.action-buttons button:hover {
+    transform: scale(1.1);
+}
+
+.edit-button {
+    background: #007bff;
+    color: white;
+}
+
+.edit-button:hover {
+    background: #0056b3;
+}
+
+.delete-button {
+    background: #dc3545;
+    color: white;
+}
+
+.delete-button:hover {
+    background: #b52a37;
+}
+
+/* Modal */
+.modalganancia {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modalganancia-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 50%;
+    max-width: 750px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modalganancia-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modalganancia-buttons button {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modalganancia-buttons button:first-child {
+    background: #e74c3c;
+    color: white;
+}
+
+.modalganancia-buttons button:last-child {
+    background: #3498db;
+    color: white;
+}
+
+.modalganancia-buttons button:hover {
+    opacity: 0.9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -57,7 +57,7 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/gananciaperdida" className="nav-link submenu-item">
+                  <Link to="/Gananciaperdida" className="nav-link submenu-item">
                     {isOpen && "Ganancias/Perdidas"}
                   </Link>
                 </li>

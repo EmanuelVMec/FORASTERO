@@ -11,6 +11,7 @@
   align-items: flex-start;
   padding: 17px 20px;
   box-shadow: 7px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra lateral */
+  z-index: 3;
 }
 
 .sidebar.open {
